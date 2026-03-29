@@ -1,10 +1,1105 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>SRAGHAVAN.ME</title>
-  </head>
-  <body>
-  <h1>Hello WorLd</h1>
-  </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srinivasa Raghavan K M — AI & Speech Technology</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #1a1a1a;
+    --accent: #c8a96e;
+    --accent2: #e8c97e;
+    --text: #e8e4dc;
+    --muted: #7a7570;
+    --border: #2a2a2a;
+    --green: #4a9e6a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s;
+  }
+
+  nav.scrolled {
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom-color: var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(200,169,110,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-left {
+    padding-right: 4rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    font-weight: 900;
+    margin-bottom: 0.3rem;
+  }
+
+  h1 .name-italic {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin: 1.5rem 0 2rem;
+    line-height: 1.8;
+  }
+
+  .hero-title span {
+    color: var(--green);
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #b0a898;
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    padding: 0.8rem 2rem;
+    background: var(--accent);
+    color: #0a0a0a;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent2);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-right {
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1.2s 0.5s forwards;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .stat-cell {
+    background: var(--bg2);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .stat-cell:hover {
+    background: var(--bg3);
+  }
+
+  .stat-cell::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.3s;
+  }
+
+  .stat-cell:hover::before {
+    height: 100%;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* EXPERIENCE */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+
+  .exp-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .exp-meta {
+    padding-top: 0.3rem;
+  }
+
+  .exp-company {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .exp-period {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .exp-role {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .exp-content p {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: #9a938a;
+    margin-bottom: 1rem;
+  }
+
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .tag.highlight {
+    border-color: rgba(200,169,110,0.3);
+    color: var(--accent);
+    background: rgba(200,169,110,0.05);
+  }
+
+  /* PUBLICATIONS */
+  .pub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pub-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+    opacity: 0;
+    transform: translateX(-15px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+
+  .pub-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .pub-year {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    padding-top: 0.2rem;
+    letter-spacing: 0.05em;
+  }
+
+  .pub-title {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .pub-venue {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+  }
+
+  .pub-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    padding: 0.25rem 0.6rem;
+    background: rgba(74,158,106,0.1);
+    border: 1px solid rgba(74,158,106,0.3);
+    color: var(--green);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .skill-block {
+    background: var(--bg2);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+
+  .skill-block:hover { background: var(--bg3); }
+
+  .skill-block-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .skill-block-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(200,169,110,0.2);
+  }
+
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .pill {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.4rem 0.9rem;
+    background: var(--bg3);
+    color: #a09880;
+    border: 1px solid var(--border);
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+
+  .pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(200,169,110,0.05);
+  }
+
+  /* EDUCATION */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .edu-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s, border-color 0.3s;
+  }
+
+  .edu-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .edu-card:hover { border-color: rgba(200,169,110,0.3); }
+
+  .edu-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 70%);
+  }
+
+  .edu-degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .edu-inst {
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .edu-period {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .edu-gpa {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--green);
+    background: rgba(74,158,106,0.08);
+    border: 1px solid rgba(74,158,106,0.2);
+    padding: 0.3rem 0.8rem;
+    display: inline-block;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    text-align: center;
+    padding: 6rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(200,169,110,0.05) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .contact-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-section p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 2rem;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(200,169,110,0.03);
+  }
+
+  /* AWARD */
+  .award-banner {
+    background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(200,169,110,0.02));
+    border: 1px solid rgba(200,169,110,0.2);
+    padding: 1.2rem 1.8rem;
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: #c8a96e;
+  }
+
+  .award-icon {
+    font-size: 1.2rem;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 0 auto;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* KEYFRAMES */
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 4rem; gap: 3rem; }
+    .hero-left { padding-right: 0; }
+    section { padding: 4rem 1.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 1rem; }
+    .edu-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">S. Raghavan K M</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Head of AI · Speech Scientist</div>
+    <h1>Srinivasa<br><span class="name-italic">Raghavan</span> KM</h1>
+    <div class="hero-title">
+      Bangalore, India &nbsp;·&nbsp;
+      <span>Navana Tech</span> &nbsp;·&nbsp;
+      IIIT-B MS Alumni
+    </div>
+    <p class="hero-desc">
+      Building the future of voice in India — low-latency Indic ASR, LLM-powered conversational AI, and open-source speech corpora that put technology in the hands of 1.4 billion people.
+    </p>
+    <div class="hero-cta">
+      <a href="mailto:srinivasaraghavankm@gmail.com" class="btn-primary">Get in Touch</a>
+      <a href="https://linkedin.com/in/srinivasaraghavankm" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-cell">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Indic Languages<br>Supported</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">10K+</div>
+        <div class="stat-label">Hours of Labeled<br>Speech Collected</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">13</div>
+        <div class="stat-label">Publications &<br>Peer Reviews</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">4.0</div>
+        <div class="stat-label">GPA — MS by Research<br>IIIT Bangalore</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>Experience</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-company">Navana Tech</div>
+      <div class="exp-period">July 2019 — Present · Bangalore</div>
+    </div>
+    <div class="exp-content">
+      <div class="exp-role">Head of AI · Head of Speech Technology · Lead Speech Scientist</div>
+      <p>
+        Led end-to-end development of <strong style="color:var(--text)">Bodhi ASR API</strong> — a real-time streaming speech recognition system supporting 10+ Indic languages and 40+ dialects, purpose-built for LLM-based conversational AI. Designed parameter-efficient Transformer and Transducer architectures (~5% the size of Whisper medium) deployed on ONNX, with real-time transducer decoding, inverse text normalisation (Pynini), and confidence estimators.
+      </p>
+      <p>
+        Built and managed a multidisciplinary AI team spanning speech scientists, NLP engineers, computational linguists, and language resource managers. Delivered a scalable speech data pipeline collecting 10,000+ hours from 15,000+ rural speakers across 9 languages and 35+ dialects.
+      </p>
+
+      <div class="award-banner">
+        <span class="award-icon">🏆</span>
+        <span><strong>13th Aegis Graham Bell Award</strong> — Innovation in Consumer Tech, for the Hello Ujjivan 10-language AI Banking Voicebot for low-literate users.</span>
+      </div>
+
+      <p>
+        Also led LLM-based generative AI solutions on Sayl.ai — including Agents, RAG frameworks, and prompt engineering for WhatsApp e-commerce customer support and product discovery.
+      </p>
+      <div class="exp-tags">
+        <span class="tag highlight">ASR</span>
+        <span class="tag highlight">Transducer</span>
+        <span class="tag highlight">LLM/RAG</span>
+        <span class="tag highlight">ONNX</span>
+        <span class="tag">Kaldi</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">Pynini</span>
+        <span class="tag">Speaker Diarization</span>
+        <span class="tag">Team Leadership</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-company">IIIT Bangalore</div>
+      <div class="exp-period">Aug 2017 — July 2022</div>
+    </div>
+    <div class="exp-content">
+      <div class="exp-role">Research Scholar (MS by Research) · Graduate Teaching Assistant</div>
+      <p>
+        MS thesis focused on <em>unsupervised representational learning for acoustic model training in low-resource scenarios</em>. Developed two novel approaches: a two-stage VQ-VAE based framework and a hybrid multitask learning (MTL) approach combining unsupervised representation learning with supervised ASR. The MTL work was later cited by a Google research group (JUST framework) at MLSLP-2021.
+      </p>
+      <p>
+        Contributed as Teaching Assistant for Automatic Speech Recognition. Mentored M.Tech students on semi-supervised learning and spoken term detection projects.
+      </p>
+      <div class="exp-tags">
+        <span class="tag highlight">VQ-VAE</span>
+        <span class="tag highlight">Multitask Learning</span>
+        <span class="tag">Low-Resource ASR</span>
+        <span class="tag">Kaldi</span>
+        <span class="tag">Code-Switching</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-company">IISc Bangalore</div>
+      <div class="exp-period">May 2015 — July 2017</div>
+    </div>
+    <div class="exp-content">
+      <div class="exp-role">Project Assistant — SPIRE Lab</div>
+      <p>
+        Set up multi-node CPU/GPU clusters with Sun Grid Engine and NFS for real-time VoIP speech processing. Built ASR and keyword spotting systems trained on standard speech corpora using the Kaldi toolkit.
+      </p>
+      <div class="exp-tags">
+        <span class="tag">Kaldi</span>
+        <span class="tag">Keyword Spotting</span>
+        <span class="tag">VoIP</span>
+        <span class="tag">HPC Cluster</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <div class="exp-company">PRDC Pvt. Ltd.</div>
+      <div class="exp-period">Aug 2012 — April 2015</div>
+    </div>
+    <div class="exp-content">
+      <div class="exp-role">Power Systems Studies Engineer</div>
+      <p>
+        Conducted power evacuation studies for wind and solar generation projects across India — including load flow analysis, short circuit studies, transient stability, reactive compensation, and DFIG fault ride-through analysis.
+      </p>
+      <div class="exp-tags">
+        <span class="tag">Power Systems</span>
+        <span class="tag">Transient Stability</span>
+        <span class="tag">DFIG</span>
+        <span class="tag">Load Flow Analysis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2>Research & Publications</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div>
+        <div class="pub-title">RESPIN-S1.0 Corpus: A read speech corpus of 10,000+ hours in dialects of nine Indian Languages</div>
+        <div class="pub-venue">NeurIPS 2025 — Datasets and Benchmarks Track</div>
+      </div>
+      <div class="pub-badge">NeurIPS</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2024</div>
+      <div>
+        <div class="pub-title">Adapter pre-training for improved speech recognition in unseen domains using low resource adapter tuning of self-supervised models</div>
+        <div class="pub-venue">Interspeech 2024, Kos, Greece</div>
+      </div>
+      <div class="pub-badge">Interspeech</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div>
+        <div class="pub-title">Gated multi encoders and multitask objectives for Dialectal Speech recognition in Indian languages</div>
+        <div class="pub-venue">ASRU 2023, Taipei, Taiwan</div>
+      </div>
+      <div class="pub-badge">ASRU</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2023</div>
+      <div>
+        <div class="pub-title">An ASR Corpus in Chhattisgarhi, a Low Resource Indian Language</div>
+        <div class="pub-venue">SPECOM 2023, India</div>
+      </div>
+      <div class="pub-badge">SPECOM</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2021</div>
+      <div>
+        <div class="pub-title">Hybrid unsupervised and supervised multitask learning for speech recognition in low resource languages</div>
+        <div class="pub-venue">MLSLP Satellite Workshop, Interspeech 2021, Brno</div>
+      </div>
+      <div class="pub-badge">Interspeech</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2021</div>
+      <div>
+        <div class="pub-title">Multilingual and code-switching ASR challenges for low resource Indian languages</div>
+        <div class="pub-venue">Interspeech 2021, Brno, Czech Republic</div>
+      </div>
+      <div class="pub-badge">Interspeech</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2021</div>
+      <div>
+        <div class="pub-title">Approaches for multilingual phone recognition in code-switched and non-code-switched scenarios</div>
+        <div class="pub-venue">ACM TALLIP 2021</div>
+      </div>
+      <div class="pub-badge">ACM</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2020</div>
+      <div>
+        <div class="pub-title">Semi-supervised learning for acoustic model retraining: Handling speech data with noisy transcript</div>
+        <div class="pub-venue">SPCOM 2020, IISc Bangalore</div>
+      </div>
+      <div class="pub-badge">SPCOM</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2018</div>
+      <div>
+        <div class="pub-title">Semi-supervised and active-learning scenarios: Efficient acoustic model refinement for low resource Indian language</div>
+        <div class="pub-venue">Interspeech 2018, Hyderabad</div>
+      </div>
+      <div class="pub-badge">Interspeech</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2017</div>
+      <div>
+        <div class="pub-title">Phoneme state posteriorgram features for speech-based automatic classification of speakers in cold and healthy condition</div>
+        <div class="pub-venue">Interspeech 2017, Stockholm</div>
+      </div>
+      <div class="pub-badge">Interspeech</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2017</div>
+      <div>
+        <div class="pub-title">A comparative study on the effect of different codecs on speech recognition accuracy using various acoustic modeling techniques</div>
+        <div class="pub-venue">NCC 2017, IIT Madras</div>
+      </div>
+      <div class="pub-badge">NCC</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2>Technical Skills</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-block">
+      <div class="skill-block-title">Core ASR & Speech</div>
+      <div class="skill-pills">
+        <span class="pill">Kaldi</span>
+        <span class="pill">K2-FSA / Icefall</span>
+        <span class="pill">Sherpa-ONNX</span>
+        <span class="pill">ESPNet</span>
+        <span class="pill">SpeechBrain</span>
+        <span class="pill">Nvidia NeMo</span>
+        <span class="pill">Pynini (ITN)</span>
+        <span class="pill">Transducer Decoding</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <div class="skill-block-title">Machine Learning</div>
+      <div class="skill-pills">
+        <span class="pill">PyTorch</span>
+        <span class="pill">TensorFlow</span>
+        <span class="pill">Transformer Arch.</span>
+        <span class="pill">VQ-VAE</span>
+        <span class="pill">Multitask Learning</span>
+        <span class="pill">ONNX Deployment</span>
+        <span class="pill">Self-supervised Models</span>
+        <span class="pill">Adapter Tuning</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <div class="skill-block-title">NLP & Generative AI</div>
+      <div class="skill-pills">
+        <span class="pill">LLM Integration</span>
+        <span class="pill">LangChain</span>
+        <span class="pill">RAG Frameworks</span>
+        <span class="pill">Prompt Engineering</span>
+        <span class="pill">AI Agents</span>
+        <span class="pill">WhatsApp AI</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <div class="skill-block-title">Programming & Data</div>
+      <div class="skill-pills">
+        <span class="pill">Python</span>
+        <span class="pill">Bash</span>
+        <span class="pill">Pandas</span>
+        <span class="pill">NumPy</span>
+        <span class="pill">Data Pipeline Design</span>
+        <span class="pill">HPC / Grid Engine</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2>Education</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-degree">MS by Research</div>
+      <div class="edu-inst">International Institute of Information Technology, Bangalore</div>
+      <div class="edu-period">July 2022 · IIIT-B</div>
+      <div class="edu-gpa">GPA 4.0 / 4.0</div>
+      <div style="margin-top:1rem; font-size:0.82rem; color: var(--muted); line-height:1.6;">
+        Relevant coursework: Deep Learning for ASR, Machine Learning, Linear Algebra, Probability & Statistics, Speech Processing, Text Processing & Information Retrieval
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-degree">B.E. Electrical & Electronics Engineering</div>
+      <div class="edu-inst">Acharya Institute of Technology, Bangalore</div>
+      <div class="edu-period">May 2012 · VTU</div>
+      <div class="edu-gpa">74.96 / 100</div>
+      <div style="margin-top:1rem; font-size:0.82rem; color: var(--muted); line-height:1.6;">
+        Foundation in electrical systems, control theory, and signal processing — a bridge to speech and audio engineering.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<div class="contact-section">
+  <div class="hero-tag" style="justify-content:center;">Let's connect</div>
+  <h2>Get in Touch</h2>
+  <p>Open to research collaborations, speaking invitations, and AI/speech technology discussions.</p>
+  <div class="contact-links">
+    <a href="mailto:srinivasaraghavankm@gmail.com" class="contact-link">
+      <span>✉</span> srinivasaraghavankm@gmail.com
+    </a>
+    <a href="tel:+918861463394" class="contact-link">
+      <span>✆</span> +91 88614 63394
+    </a>
+    <a href="https://linkedin.com/in/srinivasaraghavankm" target="_blank" class="contact-link">
+      <span>in</span> LinkedIn Profile ↗
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Srinivasa Raghavan K M</span>
+  <span>BANGALORE, INDIA</span>
+  <span>HEAD OF AI · NAVANA TECH</span>
+</footer>
+
+<script>
+  // Scroll nav
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Intersection observer for reveal animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.exp-item, .pub-item, .edu-card').forEach(el => observer.observe(el));
+</script>
+
+</body>
 </html>

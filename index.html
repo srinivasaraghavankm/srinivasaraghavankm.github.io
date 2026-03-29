@@ -88,9 +88,9 @@
   /* HERO */
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     align-items: center;
+    justify-content: center;
     padding: 0 3rem;
     position: relative;
     overflow: hidden;
@@ -108,7 +108,7 @@
   }
 
   .hero-left {
-    padding-right: 4rem;
+    max-width: 680px;
     opacity: 0;
     transform: translateY(30px);
     animation: fadeUp 0.8s 0.2s forwards;
@@ -265,6 +265,36 @@
     color: var(--muted);
     text-transform: uppercase;
     line-height: 1.4;
+  }
+
+  /* HERO PHOTO */
+  .hero-photo-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .hero-photo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: linear-gradient(135deg, var(--accent), transparent 60%);
+    z-index: 0;
+  }
+
+  .hero-photo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(20%);
+    transition: filter 0.4s;
+  }
+
+  .hero-photo:hover {
+    filter: grayscale(0%);
   }
 
   /* SECTIONS */
@@ -684,7 +714,7 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <div class="nav-logo">S. Raghavan K M</div>
+  <div class="nav-logo">Srinivasa Raghavan K M</div>
   <ul class="nav-links">
     <li><a href="#experience">Experience</a></li>
     <li><a href="#publications">Research</a></li>
@@ -708,23 +738,11 @@
       Building the future of voice in India — high-accuracy, low-latency Indic ASR and intelligent voice agents for 1.4 billion people.
     </p>
     <div class="hero-cta">
-      <a href="mailto:srinivasaraghavankm@gmail.com" class="btn-primary">Get in Touch</a>
+      <a href="/cdn-cgi/l/email-protection#eb98998285829d8a988a998a8c838a9d8a858086ab8c868a8287c5888486" class="btn-primary">Get in Touch</a>
       <a href="https://linkedin.com/in/srinivasaraghavankm" target="_blank" class="btn-ghost">LinkedIn ↗</a>
     </div>
   </div>
 
-  <div class="hero-right">
-    <div class="hero-stats">
-      <!-- <div class="stat-cell">
-        <div class="stat-num">13</div>
-        <div class="stat-label">Publications &<br>Peer Reviews</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">4.0</div>
-        <div class="stat-label">GPA — MS by Research<br>IIIT Bangalore</div>
-      </div> -->
-    </div>
-  </div>
 </section>
 
 <div class="divider"></div>
@@ -1053,8 +1071,8 @@
   <h2>Get in Touch</h2>
   <p>Open to research collaborations, speaking invitations, and AI/speech technology discussions.</p>
   <div class="contact-links">
-    <a href="mailto:srinivasaraghavankm@gmail.com" class="contact-link">
-      <span>✉</span> srinivasaraghavankm@gmail.com
+    <a href="/cdn-cgi/l/email-protection#81f2f3e8efe8f7e0f2e0f3e0e6e9e0f7e0efeaecc1e6ece0e8edafe2eeec" class="contact-link">
+      <span>✉</span> <span class="__cf_email__" data-cfemail="ff8c8d969196899e8c9e8d9e98979e899e919492bf98929e9693d19c9092">[email&#160;protected]</span>
     </a>
     <a href="https://linkedin.com/in/srinivasaraghavankm" target="_blank" class="contact-link">
       <span>in</span> LinkedIn Profile ↗
@@ -1069,7 +1087,7 @@
   <span>HEAD OF AI · NAVANA TECH</span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Scroll nav
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
@@ -1077,16 +1095,4 @@
   });
 
   // Intersection observer for reveal animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.exp-item, .pub-item, .edu-card').forEach(el => observer.observe(el));
-</script>
-
-</body>
-</html>
+  const observer = new IntersectionObserver((entries) =>

@@ -88,9 +88,9 @@
   /* HERO */
   .hero {
     min-height: 100vh;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    justify-content: center;
     padding: 0 3rem;
     position: relative;
     overflow: hidden;
@@ -108,7 +108,7 @@
   }
 
   .hero-left {
-    max-width: 680px;
+    padding-right: 4rem;
     opacity: 0;
     transform: translateY(30px);
     animation: fadeUp 0.8s 0.2s forwards;
@@ -1071,8 +1071,8 @@
   <h2>Get in Touch</h2>
   <p>Open to research collaborations, speaking invitations, and AI/speech technology discussions.</p>
   <div class="contact-links">
-    <a href="/cdn-cgi/l/email-protection#81f2f3e8efe8f7e0f2e0f3e0e6e9e0f7e0efeaecc1e6ece0e8edafe2eeec" class="contact-link">
-      <span>✉</span> <span class="__cf_email__" data-cfemail="ff8c8d969196899e8c9e8d9e98979e899e919492bf98929e9693d19c9092">[email&#160;protected]</span>
+    <a href="mailto:srinivasaraghavankm@gmail.com" class="contact-link">
+      <span>✉</span> srinivasaraghavankm@gmail.com
     </a>
     <a href="https://linkedin.com/in/srinivasaraghavankm" target="_blank" class="contact-link">
       <span>in</span> LinkedIn Profile ↗
@@ -1095,4 +1095,17 @@
   });
 
   // Intersection observer for reveal animations
-  const observer = new IntersectionObserver((entries) =>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.exp-item, .pub-item, .skill-block, .edu-card').forEach(el => {
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

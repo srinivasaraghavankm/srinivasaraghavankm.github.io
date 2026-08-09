@@ -37,7 +37,7 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
 
   body {
     background: var(--bg);
@@ -381,6 +381,64 @@
     flex: 1;
     height: 1px;
     background: var(--border);
+  }
+
+  /* ABOUT */
+  .about-lead {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    line-height: 1.45;
+    color: var(--text);
+    max-width: 920px;
+    margin-bottom: 2.5rem;
+  }
+
+  .about-lead em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .about-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .about-body p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: #9a938a;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-body p:last-child { margin-bottom: 0; }
+  .about-body strong { color: var(--text); font-weight: 500; }
+
+  .about-mission {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(200,169,110,0.02));
+    border: 1px solid rgba(200,169,110,0.2);
+    border-left: 3px solid var(--accent);
+    padding: 1.6rem 2rem;
+    margin-top: 1rem;
+  }
+
+  .about-mission-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+  }
+
+  .about-mission p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--accent2);
+    margin: 0;
   }
 
   /* EXPERIENCE */
@@ -772,6 +830,7 @@
     .hero-left { padding-right: 0; }
     section { padding: 4rem 1.5rem; }
     .exp-item { grid-template-columns: 1fr; gap: 1rem; }
+    .about-body { grid-template-columns: 1fr; gap: 0; }
     .edu-grid { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     .nav-links { display: none; }
@@ -784,6 +843,7 @@
 <nav id="navbar">
   <div class="nav-logo">Srinivasa Raghavan K M</div>
   <ul class="nav-links">
+    <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#publications">Research</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -803,7 +863,7 @@
       IIIT-B MS Alumni
     </div>
     <p class="hero-desc">
-      Building the future of voice in India — high-accuracy, low-latency Indic ASR and intelligent voice agents for 1.4 billion people.
+      Building India's voice AI — compute-efficient, low-latency Indic speech recognition and enterprise voice agents reaching 900M+ speakers across 10+ languages and 40+ dialects.
     </p>
     <div class="hero-cta">
       <a href="mailto:srinivasaraghavankm@gmail.com" class="btn-primary">Get in Touch</a>
@@ -826,8 +886,8 @@
         <div class="stat-label">Dialects supported<br>across India</div>
       </div>
       <div class="stat-cell">
-        <div class="stat-num">12</div>
-        <div class="stat-label">Peer-reviewed<br>publications</div>
+        <div class="stat-num">10<span style="font-size:1.6rem">+</span></div>
+        <div class="stat-label">Publications — NeurIPS,<br>Interspeech, ASRU</div>
       </div>
     </div>
     <div class="hero-now">
@@ -840,10 +900,49 @@
 
 <div class="divider"></div>
 
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2>About</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <p class="about-lead">
+    I lead AI at <em>Navana Tech</em>, building India's foundational voice AI — speech technology that understands the country <em>contextually</em>, not just linguistically, across telephony noise, accents, dialects, code-switching, and low-literacy users.
+  </p>
+
+  <div class="about-body">
+    <div>
+      <p>
+        As <strong>Head of AI at Navana Tech</strong>, I lead the development of the company's Voice AI stack powering AI contact-centre intelligence for <strong>BFSI enterprises</strong> — voice agents deployed for loan collections, loan sales, and customer support that hold up under real-world telephony conditions across India.
+      </p>
+      <p>
+        Over nearly seven years at Navana, I've built a multidisciplinary AI team from the ground up — speech scientists, ML engineers, computational linguists, and language specialists — and led the in-house <strong>Bodhi Speech API</strong>: a compute-efficient, low-latency, real-time streaming ASR platform for 10+ Indian languages and 40+ dialects. Optimised for CPU deployment, it delivers production-grade performance at low total cost of ownership across several BFSI enterprises.
+      </p>
+    </div>
+    <div>
+      <p>
+        I've worked in automatic speech recognition for over a decade — beginning at the <strong>SPIRE Lab, IISc Bangalore</strong>, then an MS by Research at <strong>IIIT Bangalore</strong> with a thesis on low-resource ASR. My work centres on speech and language technology for low-resource languages, breaking language barriers, and expanding digital access for linguistically diverse populations.
+      </p>
+      <p>
+        I represented Navana's leadership in <strong>RESPIN</strong> — as data partner alongside IISc and the Bill &amp; Melinda Gates Foundation — building one of the first large-scale open-source dialectal speech corpora for Indian languages: 10,000+ hours across nine languages and 35+ dialects. The RESPIN-S1.0 corpus was accepted at <strong>NeurIPS 2025</strong>, and I've authored 10+ publications at NeurIPS, Interspeech, and ASRU.
+      </p>
+    </div>
+
+    <div class="about-mission">
+      <div class="about-mission-label">Navana Tech · Mission</div>
+      <p>"Turn every call into business outcomes — enterprise-grade Voice AI, built to understand India."</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-header">
-    <span class="section-num">01</span>
+    <span class="section-num">02</span>
     <h2>Experience</h2>
     <div class="section-line"></div>
   </div>
@@ -856,10 +955,13 @@
     <div class="exp-content">
       <div class="exp-role">Head of AI · Head of Speech Technology · Lead Speech Scientist</div>
       <p>
-        Led end-to-end development of <strong style="color:var(--text)">Bodhi ASR API</strong> — a real-time streaming speech recognition system supporting 10+ Indic languages and 40+ dialects, purpose-built for LLM-based conversational AI.  
+        Lead the development of Navana's Voice AI stack powering <strong style="color:var(--text)">AI contact-centre intelligence for BFSI enterprises</strong> — voice agents deployed for loan collections, loan sales, and customer support that operate reliably under telephony audio, noise, accents, dialectal variation, and code-switching.
       </p>
       <p>
-        Built and managed a multidisciplinary AI team spanning speech scientists, NLP engineers, computational linguists, and language resource managers. Delivered a scalable speech data pipeline collecting 10,000+ hours from 15,000+ rural speakers across 9 languages and 35+ dialects.
+        Led end-to-end development of the in-house <strong style="color:var(--text)">Bodhi Speech API</strong> — a compute-efficient, low-latency, real-time streaming ASR platform supporting 10+ Indic languages and 40+ dialects. Optimised for CPU deployment, it delivers production-grade performance at low total cost of ownership across several BFSI enterprises.
+      </p>
+      <p>
+        Built and managed a multidisciplinary AI team from the ground up — speech scientists, ML engineers, computational linguists, and language resource managers. Delivered a scalable speech data pipeline collecting 10,000+ hours from 15,000+ rural speakers across 9 languages and 35+ dialects.
       </p>
 
       <div class="award-banner">
@@ -950,7 +1052,7 @@
 <!-- PUBLICATIONS -->
 <section id="publications">
   <div class="section-header">
-    <span class="section-num">02</span>
+    <span class="section-num">03</span>
     <h2>Research & Publications</h2>
     <div class="section-line"></div>
   </div>
@@ -1064,7 +1166,7 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="section-header">
-    <span class="section-num">03</span>
+    <span class="section-num">04</span>
     <h2>Technical Skills</h2>
     <div class="section-line"></div>
   </div>
@@ -1122,7 +1224,7 @@
 <!-- EDUCATION -->
 <section id="education">
   <div class="section-header">
-    <span class="section-num">04</span>
+    <span class="section-num">05</span>
     <h2>Education</h2>
     <div class="section-line"></div>
   </div>

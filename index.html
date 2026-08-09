@@ -3,7 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Srinivasa Raghavan K M — AI & Speech Technology</title>
+<title>Srinivasa Raghavan K M — Head of AI & Speech Technology</title>
+<meta name="description" content="Srinivasa Raghavan K M — Head of AI at Navana Tech, building high-accuracy, low-latency Indic speech recognition (Bodhi ASR) and voice AI for 10+ Indian languages. IIIT-B MS by Research.">
+<meta name="author" content="Srinivasa Raghavan K M">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://srinivasaraghavankm.github.io/">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Srinivasa Raghavan K M — Head of AI & Speech Technology">
+<meta property="og:description" content="Building the future of voice in India — high-accuracy, low-latency Indic ASR and intelligent voice agents for 10+ languages and 40+ dialects.">
+<meta property="og:url" content="https://srinivasaraghavankm.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Srinivasa Raghavan K M — Head of AI & Speech Technology">
+<meta name="twitter:description" content="Head of AI at Navana Tech. Indic speech recognition, voice agents, and low-resource ASR research.">
+
+<!-- Favicon: monogram "S" in brand gold on dark -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23c8a96e' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -83,7 +100,8 @@
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--accent); }
 
   /* HERO */
   .hero {
@@ -91,7 +109,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    padding: 0 3rem;
+    padding: 7rem 3rem 3rem;
     position: relative;
     overflow: hidden;
   }
@@ -265,6 +283,41 @@
     color: var(--muted);
     text-transform: uppercase;
     line-height: 1.4;
+  }
+
+  /* HERO "NOW" TICKER */
+  .hero-now {
+    margin-top: 1.5px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-top: none;
+    padding: 1rem 1.4rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-now strong { color: var(--accent); font-weight: 500; }
+
+  .hero-now-dot {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 0 rgba(74,158,106,0.6);
+    animation: pulse 2.2s infinite;
+  }
+
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(74,158,106,0.5); }
+    70%  { box-shadow: 0 0 0 8px rgba(74,158,106,0); }
+    100% { box-shadow: 0 0 0 0 rgba(74,158,106,0); }
   }
 
   /* HERO PHOTO */
@@ -697,6 +750,21 @@
   ::-webkit-scrollbar-thumb { background: var(--border); }
   ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
+  /* REDUCED MOTION */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .hero-left, .hero-right,
+    .exp-item, .pub-item, .skill-block, .edu-card {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
   /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 1.2rem 1.5rem; }
@@ -738,8 +806,33 @@
       Building the future of voice in India — high-accuracy, low-latency Indic ASR and intelligent voice agents for 1.4 billion people.
     </p>
     <div class="hero-cta">
-      <a href="/cdn-cgi/l/email-protection#eb98998285829d8a988a998a8c838a9d8a858086ab8c868a8287c5888486" class="btn-primary">Get in Touch</a>
-      <a href="https://www.linkedin.com/in/srinivasa-raghavan-k-m-02455547/" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+      <a href="mailto:srinivasaraghavankm@gmail.com" class="btn-primary">Get in Touch</a>
+      <a href="https://www.linkedin.com/in/srinivasa-raghavan-k-m-02455547/" target="_blank" rel="noopener" class="btn-ghost">LinkedIn ↗</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-cell">
+        <div class="stat-num">10,000<span style="font-size:1.6rem">+</span></div>
+        <div class="stat-label">Hours of speech data<br>pipelined &amp; validated</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">10<span style="font-size:1.6rem">+</span></div>
+        <div class="stat-label">Indic languages<br>in production ASR</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">40<span style="font-size:1.6rem">+</span></div>
+        <div class="stat-label">Dialects supported<br>across India</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Peer-reviewed<br>publications</div>
+      </div>
+    </div>
+    <div class="hero-now">
+      <span class="hero-now-dot"></span>
+      Currently building <strong>Bodhi ASR</strong> — real-time streaming speech recognition for LLM voice agents
     </div>
   </div>
 
@@ -1075,12 +1168,12 @@
 
 <!-- FOOTER -->
 <footer>
-  <span>© 2026 Srinivasa Raghavan K M</span>
+  <span>© <span id="year">2026</span> Srinivasa Raghavan K M</span>
   <span>BANGALORE, INDIA</span>
   <span>HEAD OF AI · NAVANA TECH</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Scroll nav
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
@@ -1092,6 +1185,7 @@
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.classList.add('visible');
+        observer.unobserve(e.target);
       }
     });
   }, { threshold: 0.1 });
@@ -1099,6 +1193,23 @@
   document.querySelectorAll('.exp-item, .pub-item, .skill-block, .edu-card').forEach(el => {
     observer.observe(el);
   });
+
+  // Active section highlighting in nav
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = [...navLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+
+  // Keep footer year current
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
